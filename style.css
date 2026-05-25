@@ -1,0 +1,292 @@
+/* STYLE.CSS */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:black;
+overflow:hidden;
+color:white;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
+opacity:0;
+pointer-events:none;
+transform:scale(1.1);
+transition:1s;
+overflow:hidden;
+}
+
+.active{
+opacity:1;
+pointer-events:all;
+transform:scale(1);
+}
+
+.stars{
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%, rgba(255,255,255,0.15), transparent 2%),
+radial-gradient(circle at 80% 30%, rgba(255,255,255,0.15), transparent 2%),
+radial-gradient(circle at 50% 80%, rgba(255,255,255,0.15), transparent 2%),
+linear-gradient(to bottom,#160022,#000);
+background-size:200px 200px;
+animation:bgMove 30s linear infinite;
+}
+
+@keyframes bgMove{
+from{background-position:0 0;}
+to{background-position:1000px 1000px;}
+}
+
+.title{
+font-size:4rem;
+z-index:2;
+text-align:center;
+margin-bottom:20px;
+}
+
+.subtitle{
+font-size:1.2rem;
+max-width:700px;
+text-align:center;
+line-height:1.8;
+z-index:2;
+color:#ffdce5;
+}
+
+.glow{
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px pink;}
+to{text-shadow:0 0 30px hotpink;}
+}
+
+.mainBtn,.nextBtn{
+padding:18px 40px;
+border:none;
+border-radius:100px;
+background:linear-gradient(45deg,#ff4d6d,#ff8fa3);
+color:white;
+font-size:1.1rem;
+margin-top:40px;
+cursor:pointer;
+z-index:2;
+box-shadow:0 0 30px rgba(255,0,100,0.5);
+}
+
+.scrapbook{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+width:100%;
+max-width:1000px;
+z-index:2;
+}
+
+.photo{
+background:white;
+padding:10px;
+border-radius:20px;
+overflow:hidden;
+transform:rotate(-2deg);
+animation:float 4s ease-in-out infinite;
+}
+
+.photo img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.photo span{
+display:block;
+color:#222;
+text-align:center;
+margin-top:10px;
+font-weight:600;
+}
+
+@keyframes float{
+50%{transform:translateY(-10px) rotate(2deg);}
+}
+
+.petals{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:999;
+}
+
+.petals::before{
+content:'🌸 🌸 🌸 🌸 🌸 🌸 🌸';
+position:absolute;
+font-size:2rem;
+width:100%;
+animation:petals 15s linear infinite;
+}
+
+@keyframes petals{
+from{
+transform:translateY(-100px);
+}
+to{
+transform:translateY(120vh);
+}
+}
+
+.envelope{
+width:320px;
+height:220px;
+background:#ffdce5;
+position:relative;
+border-radius:10px;
+cursor:pointer;
+z-index:2;
+box-shadow:0 0 40px rgba(255,255,255,0.2);
+}
+
+.cover{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,transparent 50%,#ffb3c6 50%);
+transition:1s;
+transform-origin:top;
+}
+
+.letter{
+position:absolute;
+width:90%;
+height:90%;
+background:white;
+top:5%;
+left:5%;
+padding:20px;
+color:#333;
+border-radius:10px;
+transform:translateY(80%);
+transition:1s;
+}
+
+.open .cover{
+transform:rotateX(180deg);
+}
+
+.open .letter{
+transform:translateY(0);
+}
+
+.hidden{
+display:none;
+}
+
+.floatingTexts span{
+position:absolute;
+opacity:0.2;
+font-size:1.4rem;
+animation:floatWords 10s linear infinite;
+}
+
+.floatingTexts span:nth-child(1){left:10%;animation-delay:0s;}
+.floatingTexts span:nth-child(2){left:30%;animation-delay:2s;}
+.floatingTexts span:nth-child(3){left:60%;animation-delay:4s;}
+.floatingTexts span:nth-child(4){left:80%;animation-delay:6s;}
+
+@keyframes floatWords{
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-120vh);
+}
+}
+
+.carousel{
+position:relative;
+width:300px;
+height:400px;
+z-index:2;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:25px;
+opacity:0;
+transition:1s;
+}
+
+.activeSlide{
+opacity:1;
+}
+
+.heart{
+font-size:9rem;
+z-index:2;
+animation:heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat{
+50%{
+transform:scale(1.1);
+}
+}
+
+.glass{
+position:absolute;
+inset:0;
+background:
+linear-gradient(45deg,transparent 48%,rgba(255,255,255,0.15) 50%,transparent 52%),
+linear-gradient(-45deg,transparent 48%,rgba(255,255,255,0.15) 50%,transparent 52%);
+background-size:40px 40px;
+opacity:0.4;
+}
+
+#musicBtn{
+position:fixed;
+top:20px;
+right:20px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#ff4d6d;
+color:white;
+font-size:1.5rem;
+z-index:9999;
+}
+
+@media(max-width:768px){
+
+.title{
+font-size:2.5rem;
+}
+
+.subtitle{
+font-size:1rem;
+}
+
+.photo img{
+height:220px;
+}
+
+}
